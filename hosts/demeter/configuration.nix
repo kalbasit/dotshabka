@@ -4,7 +4,7 @@ with lib;
 
 {
   imports = [
-    ../../modules/nixos
+    <shabka/modules/nixos>
 
     ./home.nix
   ]

@@ -18,7 +18,7 @@ in {
     "${shabka.external.nixos-hardware.path}/common/pc/laptop"
     "${shabka.external.nixos-hardware.path}/common/pc/laptop/ssd"
 
-    ../../modules/nixos
+    <shabka/modules/nixos>
 
     ./home.nix
   ]

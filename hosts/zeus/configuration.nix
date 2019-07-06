@@ -66,7 +66,7 @@ in {
     "${shabka.external.nixos-hardware.path}/common/cpu/intel"
     "${shabka.external.nixos-hardware.path}/common/pc/ssd"
 
-    ../../modules/nixos
+    <shabka/modules/nixos>
 
     ./home.nix
   ]

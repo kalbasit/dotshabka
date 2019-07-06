@@ -1,6 +1,6 @@
 {
   imports = [
-    ../../modules/darwin
+    <shabka/modules/darwin>
 
     ./home.nix
   ];

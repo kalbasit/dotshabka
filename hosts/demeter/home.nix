@@ -6,7 +6,7 @@
 
   {
     imports = [
-      ../../modules/home
+      <shabka/modules/home>
     ];
 
     mine.nixosConfig = nixosConfig;

@@ -1,4 +1,4 @@
-with import ../../util;
+with import <shabka/util>;
 
 let
   nixos = buildNixOSConfiguration { conf = ./configuration.nix; withShim = true; };

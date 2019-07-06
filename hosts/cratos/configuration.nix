@@ -16,7 +16,7 @@ in {
 
     "${shabka.external.nixos-hardware.path}/dell/xps/13-9380"
 
-    ../../modules/nixos
+    <shabka/modules/nixos>
 
     ./home.nix
   ]
