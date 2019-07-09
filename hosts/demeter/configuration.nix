@@ -18,9 +18,9 @@ with lib;
 
   networking.hostName = "demeter";
 
-  mine.hardware.machine = "cloud";
+  shabka.hardware.machine = "cloud";
 
-  mine.users = {
+  shabka.users = {
     enable = true;
 
     users = {
@@ -28,9 +28,9 @@ with lib;
     };
   };
 
-  mine.virtualisation.docker.enable = true;
+  shabka.virtualisation.docker.enable = true;
 
-  # This value determines the NixOS release with which your system is to be
+  # This value detershabkas the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database
   # servers. You should change this only after NixOS release notes say you
   # should.

@@ -1,5 +1,5 @@
 {
-  mine.home-manager.config = { darwinConfig }:
+  shabka.home-manager.config = { darwinConfig }:
   { ... }:
 
   {
@@ -7,15 +7,15 @@
       <shabka/modules/home>
     ];
 
-    mine.darwinConfig = darwinConfig;
+    shabka.darwinConfig = darwinConfig;
 
-    mine.git.enable = true;
-    mine.less.enable = true;
-    mine.neovim.enable = true;
-    mine.pet.enable = true;
-    mine.taskwarrior.enable = true;
-    mine.timewarrior.enable = true;
-    mine.tmux.enable = true;
-    mine.keyboard.layouts = [ "colemak" ];
+    shabka.git.enable = true;
+    shabka.less.enable = true;
+    shabka.neovim.enable = true;
+    shabka.pet.enable = true;
+    shabka.taskwarrior.enable = true;
+    shabka.timewarrior.enable = true;
+    shabka.tmux.enable = true;
+    shabka.keyboard.layouts = [ "colemak" ];
   };
 }

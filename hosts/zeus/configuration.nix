@@ -78,11 +78,11 @@ in {
 
   networking.hostName = "zeus";
 
-  mine.keyboard.layouts = [ "colemak" ];
-  mine.neovim.enable = true;
-  mine.virtualisation.libvirtd.enable = true;
+  shabka.keyboard.layouts = [ "colemak" ];
+  shabka.neovim.enable = true;
+  shabka.virtualisation.libvirtd.enable = true;
 
-  mine.users = {
+  shabka.users = {
     enable = true;
 
     users = {
@@ -90,7 +90,7 @@ in {
     };
   };
 
-  mine.hardware.machine = "zeus";
+  shabka.hardware.machine = "zeus";
 
   # enable iScsi with libvirtd
   nixpkgs.overlays = [
@@ -174,7 +174,7 @@ in {
     };
   };
 
-  mine.plex = {
+  shabka.plex = {
     enable = true;
     dataDir = "/nas/Plex/Library/Application\ Support";
   };
@@ -252,7 +252,7 @@ in {
     };
   };
 
-  # This value determines the NixOS release with which your system is to be
+  # This value detershabkas the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database
   # servers. You should change this only after NixOS release notes say you
   # should.

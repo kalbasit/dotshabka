@@ -36,20 +36,20 @@ in {
     builders-use-substitutes = true
   '';
 
-  mine.hardware.intel_backlight.enable = true;
-  mine.printing.enable = true;
-  mine.keyboard.layouts = [ "colemak" ];
-  mine.users.enable = true;
-  mine.virtualisation.docker.enable = true;
+  shabka.hardware.intel_backlight.enable = true;
+  shabka.printing.enable = true;
+  shabka.keyboard.layouts = [ "colemak" ];
+  shabka.users.enable = true;
+  shabka.virtualisation.docker.enable = true;
 
-  mine.workstation = {
+  shabka.workstation = {
     enable = true;
 
     autorandr.enable = true;
     keeptruckin.enable = true;
   };
 
-  mine.hardware.machine = "precision-7530";
+  shabka.hardware.machine = "precision-7530";
 
   services.logind.extraConfig = ''
     HandlePowerKey=suspend
@@ -75,7 +75,7 @@ in {
     };
   };
 
-  # This value determines the NixOS release with which your system is to be
+  # This value detershabkas the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database
   # servers. You should change this only after NixOS release notes say you
   # should.

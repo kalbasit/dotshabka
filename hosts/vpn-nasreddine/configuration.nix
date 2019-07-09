@@ -12,8 +12,8 @@ with lib;
   i18n.defaultLocale = "en_US.UTF-8";
   time.timeZone = "America/Los_Angeles";
 
-  mine.hardware.machine = "cloud";
-  mine.users.enable = false; # XXX: enable this for the root password but have to disable home-manager
+  shabka.hardware.machine = "cloud";
+  shabka.users.enable = false; # XXX: enable this for the root password but have to disable home-manager
 
   networking.hostName = "vpn-nasreddine";
 
