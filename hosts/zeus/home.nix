@@ -1,5 +1,5 @@
 {
-  mine.home-manager.config = { userName, uid, isAdmin, home, nixosConfig }:
+  shabka.home-manager.config = { userName, uid, isAdmin, home, nixosConfig }:
   { lib, ... }:
 
   with lib;
@@ -9,11 +9,11 @@
       <shabka/modules/home>
     ];
 
-    mine.nixosConfig = nixosConfig;
+    shabka.nixosConfig = nixosConfig;
 
-    mine.neovim.enable = true;
-    mine.pet.enable = true;
-    mine.tmux.enable = true;
-    mine.keyboard.layouts = [ "colemak" ];
+    shabka.neovim.enable = true;
+    shabka.pet.enable = true;
+    shabka.tmux.enable = true;
+    shabka.keyboard.layouts = [ "colemak" ];
   };
 }

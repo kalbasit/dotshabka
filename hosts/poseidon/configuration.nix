@@ -9,7 +9,7 @@
 
   time.timeZone = "America/Los_Angeles";
 
-  # mine.gnupg.enable = true;
-  mine.keyboard.layouts = [ "colemak" ];
-  mine.fonts.enable = true;
+  # shabka.gnupg.enable = true;
+  shabka.keyboard.layouts = [ "colemak" ];
+  shabka.fonts.enable = true;
 }

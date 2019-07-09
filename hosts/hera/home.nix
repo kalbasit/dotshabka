@@ -1,5 +1,5 @@
 {
-  mine.home-manager.config = { userName, uid, isAdmin, home, nixosConfig }:
+  shabka.home-manager.config = { userName, uid, isAdmin, home, nixosConfig }:
   { lib, ... }:
 
   with lib;
@@ -10,7 +10,7 @@
     ]
     ++ (optionals (builtins.pathExists ./../../secrets/home) (singleton ./../../secrets/home));
 
-    mine.nixosConfig = nixosConfig;
+    shabka.nixosConfig = nixosConfig;
 
     home.file.".gnupg/scdaemon.conf".text = ''
       reader-port Yubico YubiKey FIDO+CCID 01 00
@@ -18,21 +18,21 @@
       card-timeout 5
     '';
 
-    mine.batteryNotifier.enable = true;
-    mine.git.enable = true;
-    mine.pijul.enable = true;
-    mine.gnupg.enable = true;
-    mine.keybase.enable = true;
-    mine.less.enable = true;
-    mine.neovim.enable = true;
-    mine.pet.enable = true;
-    mine.taskwarrior.enable = true;
-    mine.timewarrior.enable = true;
-    mine.tmux.enable = true;
-    mine.keyboard.layouts = [ "colemak" ];
-    mine.workstation.enable = true;
+    shabka.batteryNotifier.enable = true;
+    shabka.git.enable = true;
+    shabka.pijul.enable = true;
+    shabka.gnupg.enable = true;
+    shabka.keybase.enable = true;
+    shabka.less.enable = true;
+    shabka.neovim.enable = true;
+    shabka.pet.enable = true;
+    shabka.taskwarrior.enable = true;
+    shabka.timewarrior.enable = true;
+    shabka.tmux.enable = true;
+    shabka.keyboard.layouts = [ "colemak" ];
+    shabka.workstation.enable = true;
 
-    mine.workstation.autorandr.enable = true;
+    shabka.workstation.autorandr.enable = true;
 
     programs.autorandr.profiles = {
       "default" = {
