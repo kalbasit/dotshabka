@@ -32,10 +32,32 @@
     shabka.keyboard.layouts = [ "colemak" ];
     shabka.workstation.enable = true;
 
-    # shabka.workstation.i3.bar = {
-    #   engine = "polybar";
-    #   wlan = "wlp110s0";
-    # };
+    shabka.workstation.i3.bar = {
+      polybar.enable = true;
+      modules = {
+        backlight.enable = true;
+        battery.enable = true;
+        cpu.enable = true;
+        time = {
+          enable = true;
+
+          timezones = [
+            { timezone = "UTC"; prefix = "UTC"; format = "%H:%M:%S"; }
+            { timezone = "America/Los_Angeles"; prefix = "PST"; format = "%H:%M:%S"; }
+          ];
+        };
+        filesystems.enable = true;
+        ram.enable = true;
+        network = {
+          enable = true;
+          eth = [ "eno1" ];
+          wlan = [ "wlp110s0" ];
+        };
+        volume.enable = true;
+        keyboardLayout.enable = true;
+        temperature.enable = true;
+      };
+    };
 
     shabka.workstation.autorandr.enable = true;
 
