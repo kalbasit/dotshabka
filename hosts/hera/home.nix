@@ -51,7 +51,7 @@
         network = {
           enable = true;
           eth = [ "eno1" ];
-          wlan = [ "wlp110s0" ];
+          wlan = [ "wlp109s0" ];
         };
         volume.enable = true;
         keyboardLayout.enable = true;
