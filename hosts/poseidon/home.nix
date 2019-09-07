@@ -5,6 +5,8 @@
   {
     imports = [
       <shabka/modules/home>
+
+      ../../modules/home
     ];
 
     shabka.darwinConfig = darwinConfig;
