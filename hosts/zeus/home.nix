@@ -7,6 +7,8 @@
   {
     imports = [
       <shabka/modules/home>
+
+      ../../modules/home
     ];
 
     shabka.nixosConfig = nixosConfig;

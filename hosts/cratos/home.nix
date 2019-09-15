@@ -7,6 +7,8 @@
   {
     imports = [
       <shabka/modules/home>
+
+      ../../modules/home
     ]
     ++ (optionals (builtins.pathExists ./../../secrets/home) (singleton ./../../secrets/home));
 
