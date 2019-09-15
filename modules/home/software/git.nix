@@ -19,89 +19,83 @@ in {
       gitAndTools.tig
     ];
 
-    programs.git.aliases = mkMerge (
-      (singleton hm_cfg.aliases)
-      [{
-        # list files which have changed since REVIEW_BASE
-        # (REVIEW_BASE defaults to 'master' in my zshrc)
-        files     = "\"!git diff --name-only \$(git merge-base HEAD \\\"\${REVIEW_BASE:-master}\\\")\"";
+    programs.git.aliases = {
+      # list files which have changed since REVIEW_BASE
+      # (REVIEW_BASE defaults to 'master' in my zshrc)
+      files     = "\"!git diff --name-only \$(git merge-base HEAD \\\"\${REVIEW_BASE:-master}\\\")\"";
 
-        # Same as above, but with a diff stat instead of just names
-        # (better for interactive use)
-        stat      = "\"!git diff --stat \$(git merge-base HEAD \\\"\${REVIEW_BASE:-master}\\\")\"";
+      # Same as above, but with a diff stat instead of just names
+      # (better for interactive use)
+      stat      = "\"!git diff --stat \$(git merge-base HEAD \\\"\${REVIEW_BASE:-master}\\\")\"";
 
-        # Open all files changed since REVIEW_BASE in Vim tabs
-        # Then, run fugitive's :Gdiff in each tab, and finally
-        review    = "\"!nvim -p $(git files) +\\\"tabdo Gdiff \${REVIEW_BASE:-master}\\\"\"";
+      # Open all files changed since REVIEW_BASE in Vim tabs
+      # Then, run fugitive's :Gdiff in each tab, and finally
+      review    = "\"!nvim -p $(git files) +\\\"tabdo Gdiff \${REVIEW_BASE:-master}\\\"\"";
 
-        # Same as the above, except specify names of files as arguments,
-        # instead of opening all files:
-        # git reviewone foo.js bar.js
-        reviewone = "\"!nvim -p +\\\"tabdo Gdiff \${REVIEW_BASE:-master}\\\"\"";
-      }]
-    );
+      # Same as the above, except specify names of files as arguments,
+      # instead of opening all files:
+      # git reviewone foo.js bar.js
+      reviewone = "\"!nvim -p +\\\"tabdo Gdiff \${REVIEW_BASE:-master}\\\"\"";
+    };
 
-    programs.git.extraConfig = mkMerge (
-      (singleton hm_cfg.extraConfig)
-      [{
-        core = {
-          whitespace = "trailing-space,space-before-tab,-indent-with-non-tab,cr-at-eol";
-        };
+    programs.git.extraConfig = {
+      core = {
+        whitespace = "trailing-space,space-before-tab,-indent-with-non-tab,cr-at-eol";
+      };
 
-        diff = {
-          tool = "vimdiff";
-        };
+      diff = {
+        tool = "vimdiff";
+      };
 
-        difftool = {
-          prompt = false;
-        };
+      difftool = {
+        prompt = false;
+      };
 
-        help = {
-          autocorrect = 30;
-        };
+      help = {
+        autocorrect = 30;
+      };
 
-        http = {
-          cookiefile = "~/.gitcookies";
-        };
+      http = {
+        cookiefile = "~/.gitcookies";
+      };
 
-        "http \"https://gopkg.in\"" = {
-          followRedirects = true;
-        };
+      "http \"https://gopkg.in\"" = {
+        followRedirects = true;
+      };
 
-        merge = {
-          log  = true;
-          tool = "vimdiff";
-        };
+      merge = {
+        log  = true;
+        tool = "vimdiff";
+      };
 
-        mergetool = {
-          prompt = true;
-        };
+      mergetool = {
+        prompt = true;
+      };
 
-        "mergetool \"vimdiff\"" = optionalAttrs config.shabka.neovim.enable {
-          cmd = "nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'";
-        };
+      "mergetool \"vimdiff\"" = optionalAttrs config.shabka.neovim.enable {
+        cmd = "nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'";
+      };
 
-        "protocol \"keybase\"" = {
-          allow = "always";
-        };
+      "protocol \"keybase\"" = {
+        allow = "always";
+      };
 
-        push = {
-          default = "current";
-        };
+      push = {
+        default = "current";
+      };
 
-        sendemail = {
-          smtpserver       = "${pkgs.msmtp}/bin/msmtp";
-          smtpserveroption = "--account=personal";
-        };
+      sendemail = {
+        smtpserver       = "${pkgs.msmtp}/bin/msmtp";
+        smtpserveroption = "--account=personal";
+      };
 
-        status = {
-          submodule = 1;
-        };
+      status = {
+        submodule = 1;
+      };
 
-        "url \"https://github\"" = {
-          insteadOf = "git://github";
-        };
-      }]
-    );
+      "url \"https://github\"" = {
+        insteadOf = "git://github";
+      };
+    };
   };
 }
