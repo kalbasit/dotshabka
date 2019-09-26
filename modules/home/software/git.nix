@@ -17,6 +17,7 @@ in {
     home.packages = with pkgs; [
       (gitAndTools.git-appraise or shabka.external.nixpkgs.release-unstable.gitAndTools.git-appraise)
       gitAndTools.tig
+      git-lfs
     ];
 
     programs.git.aliases = {
@@ -95,6 +96,13 @@ in {
 
       "url \"https://github\"" = {
         insteadOf = "git://github";
+      };
+
+      "filter \"lfs\"" = {
+        clean = "git-lfs clean -- %f";
+        smudge = "git-lfs smudge -- %f";
+        process = "git-lfs filter-process";
+        required = true;
       };
     };
   };
