@@ -6,6 +6,7 @@ let
   rootDevice   = "/dev/disk/by-uuid/80a02fae-e860-4e9d-945b-63fe9ece252f";
   bootDevice   = "/dev/disk/by-uuid/2E37-9536";
   swapDevice   = "/dev/disk/by-uuid/a7e5c6a5-79e1-4256-aa3a-e0a92ef526e0";
+  storgeDevice = "/dev/disk/by-uuid/015a0fac-a78b-45d9-90b5-eb1bd369c241";
 
   subVolumes =
     {
@@ -15,6 +16,7 @@ let
       "/yl"                    = { device = rootDevice;   subvol = "@yl"; };
       "/yl/code"               = { device = rootDevice;   subvol = "@code"; options = [ "X-mount.mkdir=0700" ]; };
       "/yl/private"            = { device = rootDevice;   subvol = "@private"; options = [ "X-mount.mkdir=0700" ]; };
+      "/yl/storage"            = { device = storgeDevice; subvol = "@home-kalbasit-storage"; };
     };
 
   mkBtrfsSubvolume = mountPoint: { device, subvol, options ? [] }:
@@ -35,6 +37,7 @@ in {
     cryptkey     = { device = "/dev/disk/by-uuid/7cb0ed7a-eb28-4a92-8280-5bc3e68cb4a3"; };
     cryptroot    = { device = "/dev/disk/by-uuid/a9e0d610-e61c-4852-a4bb-eacdf7291dd4"; keyFile = "/dev/mapper/cryptkey"; };
     cryptswap    = { device = "/dev/disk/by-uuid/7be87c50-1beb-435e-bdf6-a16925cd890e"; keyFile = "/dev/mapper/cryptkey"; };
+    cryptstorage = { device = "/dev/disk/by-uuid/15d91894-a9dc-4288-9589-bcb7945d02ce"; keyFile = "/dev/mapper/cryptkey"; };
   };
 
   fileSystems = mergeAttrs
@@ -44,6 +47,10 @@ in {
 
       "/boot" = { device = bootDevice; fsType = "vfat"; };
       "/mnt/volumes/root" = { device = rootDevice; fsType = "btrfs"; };
+
+      # Storage
+
+      "/mnt/volumes/storage" = { device = storgeDevice; fsType = "btrfs"; };
     };
 
   swapDevices = [ { device = swapDevice; } ];
