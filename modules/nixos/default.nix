@@ -1,4 +1,9 @@
+{ lib, ... }:
+
+with lib;
+
 let
+  dotshabka = import ../.. { };
   hashedPassword = "$6$0bx5eAEsHJRxkD8.$gJ7sdkOOJRf4QCHWLGDUtAmjHV/gJxPQpyCEtHubWocHh9O7pWy10Frkm1Ch8P0/m8UTUg.Oxp.MB3YSQxFXu1";
 in
 {
@@ -18,8 +23,10 @@ in
   };
 
   shabka.users.users = {
-    yl              = { inherit hashedPassword; uid = 2000; isAdmin = true;  home = "/yl"; };
-    yl_opensource   = { inherit hashedPassword; uid = 2002; isAdmin = false; home = "/yl/opensource"; };
-    yl_presentation = { inherit hashedPassword; uid = 2003; isAdmin = false; home = "/yl/presentation"; };
+    yl              = { inherit hashedPassword; sshKeys = singleton dotshabka.external.kalbasit.keys; uid = 2000; isAdmin = true;  home = "/yl"; };
+    yl_opensource   = { inherit hashedPassword; sshKeys = singleton dotshabka.external.kalbasit.keys; uid = 2002; isAdmin = false; home = "/yl/opensource"; };
+    yl_presentation = { inherit hashedPassword; sshKeys = singleton dotshabka.external.kalbasit.keys; uid = 2003; isAdmin = false; home = "/yl/presentation"; };
   };
+
+  users.users.root.openssh.authorizedKeys.keys = singleton dotshabka.external.kalbasit.keys;
 }
