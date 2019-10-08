@@ -13,4 +13,10 @@
     virtualbox.enable = true;
     xorg.enable = true;
   };
+
+  shabka.users.users = {
+    yl              = { uid = 2000; isAdmin = true;  home = "/yl"; };
+    yl_opensource   = { uid = 2002; isAdmin = false; home = "/yl/opensource"; };
+    yl_presentation = { uid = 2003; isAdmin = false; home = "/yl/presentation"; };
+  };
 }
