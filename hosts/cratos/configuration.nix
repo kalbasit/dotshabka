@@ -19,6 +19,8 @@ in {
     <shabka/modules/nixos>
 
     ./home.nix
+
+    ../../modules/nixos
   ]
   ++ (optionals (builtins.pathExists ./../../secrets/nixos) (singleton ./../../secrets/nixos));
 
@@ -39,13 +41,6 @@ in {
   shabka.keyboard.layouts = [ "colemak" ];
   shabka.users.enable = true;
   shabka.virtualisation.docker.enable = true;
-
-  shabka.workstation = {
-    enable = true;
-
-    autorandr.enable = true;
-    keeptruckin.enable = true;
-  };
 
   shabka.hardware.machine = "xps-13";
 
