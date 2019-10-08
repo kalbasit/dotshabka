@@ -76,6 +76,41 @@ in {
     };
   };
 
+  # Synergy
+  services.synergy.server = {
+    enable = true;
+  };
+
+  environment.etc."synergy-server.conf".text = ''
+    section: screens
+      hades:
+      poseidon:
+      athena:
+    end
+    section: aliases
+        hades:
+          172.25.10.126
+        poseidon:
+          172.25.10.149
+        athena:
+          172.25.10.120
+    end
+    section: links
+       athena:
+           left = hades
+       hades:
+           right = athena
+           left = poseidon
+      poseidon:
+          right = hades
+    end
+  '';
+
+  networking.firewall.allowedTCPPorts = [
+    # synergy support
+    24800
+  ];
+
   # This value detershabkas the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database
   # servers. You should change this only after NixOS release notes say you
