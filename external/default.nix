@@ -1,4 +1,4 @@
-{ stdenvNoCC }:
+{ }:
 
 with <shabka/external>;
 

@@ -4,5 +4,5 @@ with pkgs;
 
 {
   path = ./.;
-  external = import ./external { inherit stdenvNoCC; };
+  external = import ./external { };
 }
