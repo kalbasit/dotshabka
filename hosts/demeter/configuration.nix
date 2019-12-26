@@ -2,6 +2,10 @@
 
 with lib;
 
+let
+  dotshabka = import ../.. { };
+  hashedPassword = "$6$0bx5eAEsHJRxkD8.$gJ7sdkOOJRf4QCHWLGDUtAmjHV/gJxPQpyCEtHubWocHh9O7pWy10Frkm1Ch8P0/m8UTUg.Oxp.MB3YSQxFXu1";
+in
 {
   imports = [
     <shabka/modules/nixos>
@@ -24,7 +28,7 @@ with lib;
     enable = true;
 
     users = {
-      yl = { uid = 2000; isAdmin = true;  home = "/yl"; };
+      yl = { inherit hashedPassword; sshKeys = singleton dotshabka.external.kalbasit.keys; uid = 2000; isAdmin = true;  home = "/yl"; };
     };
   };
 
