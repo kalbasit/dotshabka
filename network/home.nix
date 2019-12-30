@@ -33,6 +33,11 @@ in {
     deployment.targetHost = "zeus.home.nasreddine.com";
   };
 
+  # kore = {
+  #   imports = [ ../hosts/kore/configuration.nix ];
+  #   deployment.targetHost = "kore.home.nasreddine.com";
+  # };
+
   vpn-nasreddine = { resources, ... }: {
     imports = [ ../hosts/vpn-nasreddine/configuration.nix ];
     deployment = {
