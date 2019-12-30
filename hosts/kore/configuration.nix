@@ -16,8 +16,11 @@
   services.openssh.enable = true;
 
   # enable unifi and open the remote port
-  services.unifi.enable = true;
   networking.firewall.allowedTCPPorts = [ 8443 ];
+  services.unifi = {
+    enable = true;
+    jrePackage = pkgs.jre8_headless;
+  };
 
   nixpkgs.config.allowUnfree = true;
 
