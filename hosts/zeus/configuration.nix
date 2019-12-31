@@ -7,7 +7,7 @@ let
   dotshabka = import ../.. { };
   hashedPassword = "$6$0bx5eAEsHJRxkD8.$gJ7sdkOOJRf4QCHWLGDUtAmjHV/gJxPQpyCEtHubWocHh9O7pWy10Frkm1Ch8P0/m8UTUg.Oxp.MB3YSQxFXu1";
 
-  nasIP = "192.168.50.2";
+  nasIP = "192.168.53.2";
 
   buildWindows10 = env: let
     vmName = if env == "prod" then "win10"
@@ -169,7 +169,7 @@ in {
   # systemd.services.libvirtd-guest-win10-staging = buildWindows10 "staging";
 
   # configure OpenSSH server to listen on the ADMIN interface
-  services.openssh.listenAddresses = [ { addr = "172.25.2.3"; port = 22; } ];
+  services.openssh.listenAddresses = [ { addr = "192.168.2.3"; port = 22; } ];
   systemd.services.sshd = {
     after = ["network-addresses-ifcadmin.service"];
     requires = ["network-addresses-ifcadmin.service"];
