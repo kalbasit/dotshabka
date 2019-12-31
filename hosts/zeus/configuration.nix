@@ -5,7 +5,7 @@ with lib;
 let
   shabka = import <shabka> { };
 
-  nasIP = "172.25.2.2";
+  nasIP = "192.168.50.2";
 
   buildWindows10 = env: let
     vmName = if env == "prod" then "win10"
@@ -165,7 +165,7 @@ in {
   # systemd.services.libvirtd-guest-win10-staging = buildWindows10 "staging";
 
   # configure OpenSSH server to listen on the ADMIN interface
-  services.openssh.listenAddresses = [ { addr = "172.25.250.3"; port = 22; } ];
+  services.openssh.listenAddresses = [ { addr = "172.25.2.3"; port = 22; } ];
   systemd.services.sshd = {
     after = ["network-addresses-ifcadmin.service"];
     requires = ["network-addresses-ifcadmin.service"];
@@ -192,29 +192,34 @@ in {
   networking.networkmanager.enable = false;
 
   networking.vlans = {
-    ifcns1 = {
-      id = 101;
+    # The ADMIN interface
+    ifcadmin = {
+      id = 2;
+      interface = "enp0s31f6";
+    };
+
+    # SN0 interface
+    ifcns0 = {
+      id = 50;
       interface = "enp2s0f0";
     };
 
-    ifcns2 = {
-      id = 102;
+    # SN1 interface
+    ifcns1 = {
+      id = 51;
       interface = "enp2s0f1";
     };
 
-    ifcns3 = {
-      id = 103;
+    # SN2 interface
+    ifcns2 = {
+      id = 52;
       interface = "enp4s0f0";
     };
 
-    ifcns4 = {
-      id = 104;
+    # SN3 interface
+    ifcns3 = {
+      id = 53;
       interface = "enp4s0f1";
-    };
-
-    ifcadmin = {
-      id = 250;
-      interface = "enp0s31f6";
     };
   };
 
@@ -231,23 +236,23 @@ in {
       useDHCP = true;
     };
 
-    # NS1 address
+    # SN0 address
+    ifcns0 = {
+      useDHCP = true;
+    };
+
+    # SN1 address
     ifcns1 = {
       useDHCP = true;
     };
 
-    # NS2 address
+    # SN2 address
     ifcns2 = {
       useDHCP = true;
     };
 
-    # NS3 address
+    # SN3 address
     ifcns3 = {
-      useDHCP = true;
-    };
-
-    # NS4 address
-    ifcns4 = {
       useDHCP = true;
     };
   };
