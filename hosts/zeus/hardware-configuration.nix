@@ -20,7 +20,7 @@ let
   ];
 
   toFSEntry = export: lib.nameValuePair "/nas/${export}" {
-    device = "172.25.3.2:/volume1/${export}";
+    device = "192.168.52.2:/volume1/${export}";
     fsType = "nfs";
   };
 
