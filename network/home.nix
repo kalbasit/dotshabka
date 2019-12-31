@@ -30,7 +30,7 @@ in {
 
   zeus = {
     imports = [ ../hosts/zeus/configuration.nix ];
-    deployment.targetHost = "zeus.home.nasreddine.com";
+    deployment.targetHost = "zeus.admin.nasreddine.com";
   };
 
   # kore = {
