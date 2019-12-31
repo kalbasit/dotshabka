@@ -16,25 +16,32 @@
   services.openssh.enable = true;
 
   # enable unifi and open the remote port
-  networking.firewall.allowedTCPPorts = [ 8443 ];
-  services.unifi = {
-    enable = true;
-    jrePackage = pkgs.jre8_headless;
-
-    # Use the last known working mongodb package.
-    # https://github.com/NixOS/nixpkgs/issues/75133
-    mongodbPackage = let
-      channelRelease = "nixos-19.09pre190687.3f4144c30a6";  # last known working mongo
-      channelName = "unstable";
-      url = "https://releases.nixos.org/nixos/${channelName}/${channelRelease}/nixexprs.tar.xz";
-      sha256 = "040f16afph387s0a4cc476q3j0z8ik2p5bjyg9w2kkahss1d0pzm";
-
-      pinnedNixpkgsFile = builtins.fetchTarball {
-        inherit url sha256;
-      };
-
-      pinnedNixpkgs = import pinnedNixpkgsFile {};
-    in pinnedNixpkgs.mongodb;
+  docker-containers.unifi = {
+    # jacobalberty/unifi:arm32v7
+    # https://hub.docker.com/layers/jacobalberty/unifi/arm32v7/images/sha256-c921fc8b20449e12a5342696d8266967c09e16c7aad0c3febca0ca5db5e35bd0
+    image = "jacobalberty/unifi@sha256:c921fc8b20449e12a5342696d8266967c09e16c7aad0c3febca0ca5db5e35bd0";
+    extraDockerOptions = ["--network=host"];
+    environment = {
+      TZ = "America/Los_Angeles";
+      RUNAS_UID0 = "false";
+    };
+    volumes = [
+      "/unifi:/unifi"
+    ];
+  };
+  networking.firewall = {
+    # https://help.ubnt.com/hc/en-us/articles/218506997
+    allowedTCPPorts = [
+      8080  # Port for UAP to inform controller.
+      8880  # Port for HTTP portal redirect, if guest portal is enabled.
+      8843  # Port for HTTPS portal redirect, ditto.
+      6789  # Port for UniFi mobile speed test.
+      8443  # Port for UniFi remote management
+    ];
+    allowedUDPPorts = [
+      3478  # UDP port used for STUN.
+      10001 # UDP port used for device discovery.
+    ];
   };
 
   nixpkgs.config.allowUnfree = true;
