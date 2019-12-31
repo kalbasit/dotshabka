@@ -46,6 +46,7 @@ in {
         inherit (secrets) accessKeyId region keyPair ami;
 
         instanceType = "t2.nano";
+        ebsInitialRootDiskSize = 10;
 
         securityGroups = [
           resources.ec2SecurityGroups.ssh-in
