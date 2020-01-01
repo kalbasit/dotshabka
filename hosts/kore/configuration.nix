@@ -2,6 +2,26 @@
 
 with lib;
 
+let
+  apollo_ip = "192.168.52.2";
+  unifi_config_gateway =
+    let
+      config = {
+        system = {
+          static-host-mapping = {
+            host-name = {
+              "apollo.nasreddine.com" = {
+                inet = [apollo_ip];
+              };
+              "unifi.nasreddine.com" = {
+                inet = [apollo_ip];
+              };
+            };
+          };
+        };
+      };
+    in pkgs.writeText "config.gateway.json" (builtins.toJSON config);
+in
 {
   imports = [
     ./hardware-configuration.nix
@@ -39,6 +59,10 @@ with lib;
       pinnedNixpkgs = import pinnedNixpkgsFile {};
     in pinnedNixpkgs.mongodb;
   };
+  systemd.services.unifi.preStart = ''
+    ln -nsf ${unifi_config_gateway} ${config.services.unifi.dataDir}/sites/default/config.gateway.json
+  '';
+
 
   nixpkgs.config.allowUnfree = true;
 
