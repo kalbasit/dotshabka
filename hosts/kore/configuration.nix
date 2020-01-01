@@ -1,4 +1,6 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
+
+with lib;
 
 {
   imports = [
@@ -38,6 +40,32 @@
   };
 
   nixpkgs.config.allowUnfree = true;
+
+  # configure OpenSSH server to listen on the ADMIN interface
+  networking.firewall.enable = mkForce false; # TODO: Why do I have to disable firewall for the ifcadmin interface to work with port 22?
+  services.openssh.listenAddresses = [ { addr = "192.168.2.6"; port = 22; } ];
+  systemd.services.sshd = {
+    after = ["network-addresses-ifcadmin.service"];
+    requires = ["network-addresses-ifcadmin.service"];
+    serviceConfig = {
+      RestartSec = "5";
+    };
+  };
+
+  networking.vlans = {
+    # The ADMIN interface
+    ifcadmin = {
+      id = 2;
+      interface = "eth0";
+    };
+  };
+
+  networking.interfaces = {
+    # The ADMIN interface
+    ifcadmin = {
+      useDHCP = true;
+    };
+  };
 
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database
