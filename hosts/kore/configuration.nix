@@ -22,6 +22,7 @@ with lib;
   services.unifi = {
     enable = true;
     jrePackage = pkgs.jre8_headless;
+    unifiPackage = pkgs.unifiStable;
 
     # Use the last known working mongodb package.
     # https://github.com/NixOS/nixpkgs/issues/75133
