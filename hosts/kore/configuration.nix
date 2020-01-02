@@ -10,12 +10,9 @@ let
         system = {
           static-host-mapping = {
             host-name = {
-              "apollo.nasreddine.com" = {
-                inet = [apollo_ip];
-              };
-              "unifi.nasreddine.com" = {
-                inet = [apollo_ip];
-              };
+              "apollo.nasreddine.com" = { inet = [apollo_ip]; };
+              "plex.nasreddine.com" = { inet = [apollo_ip]; };
+              "unifi.nasreddine.com" = { inet = [apollo_ip]; };
             };
           };
         };
