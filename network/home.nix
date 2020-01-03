@@ -42,6 +42,7 @@ in {
     imports = [ ../hosts/vpn-nasreddine/configuration.nix ];
     deployment = {
       targetEnv = "ec2";
+
       ec2 = {
         inherit (secrets) accessKeyId region keyPair ami;
 
@@ -52,6 +53,11 @@ in {
           resources.ec2SecurityGroups.ssh-in
           resources.ec2SecurityGroups.vpn-in
         ];
+      };
+
+      route53 = {
+        inherit (secrets) accessKeyId hostName;
+        ttl = 300;
       };
     };
   };
