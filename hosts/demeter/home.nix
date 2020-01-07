@@ -14,7 +14,6 @@
     shabka.nixosConfig = nixosConfig;
 
     shabka.git.enable = true;
-    shabka.pijul.enable = true;
     shabka.keybase.enable = true;
     shabka.less.enable = true;
     shabka.neovim.enable = true;
