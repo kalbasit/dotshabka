@@ -22,7 +22,6 @@
 
     shabka.batteryNotifier.enable = true;
     shabka.git.enable = true;
-    shabka.pijul.enable = true;
     shabka.gnupg.enable = true;
     shabka.keybase.enable = true;
     shabka.less.enable = true;
