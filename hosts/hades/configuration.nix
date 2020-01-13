@@ -39,10 +39,11 @@ in {
   '';
 
   shabka.hardware.intel_backlight.enable = true;
-  shabka.printing.enable = true;
   shabka.keyboard.layouts = [ "colemak" ];
+  shabka.printing.enable = true;
   shabka.users.enable = true;
   shabka.virtualisation.docker.enable = true;
+  shabka.virtualisation.libvirtd.enable = true;
 
   shabka.hardware.machine = "precision-7530";
 
