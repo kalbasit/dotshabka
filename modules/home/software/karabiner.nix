@@ -1,0 +1,5 @@
+{ ... }:
+
+{
+  shabka.karabiner.enable = true;
+}
