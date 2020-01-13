@@ -3,6 +3,7 @@
 with lib;
 
 let
+  dotshabka = import ../.. { };
   apollo_ip = "192.168.52.2";
   unifi_config_gateway =
     let
@@ -32,6 +33,8 @@ in
   environment.systemPackages = with pkgs; [
      vim
   ];
+
+  users.users.root.openssh.authorizedKeys.keys = singleton dotshabka.external.kalbasit.keys;
 
   services.openssh.enable = true;
 
