@@ -22,7 +22,8 @@ in
 {
   imports = [
     ./hardware-configuration.nix
-  ];
+  ]
+  ++ (optionals (builtins.pathExists ./../../secrets/nixos) (singleton ./../../secrets/nixos));
 
   networking.hostName = "kore"; # Define your hostname.
 
@@ -62,6 +63,7 @@ in
 
 
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.system = "aarch64-linux";
 
   # configure OpenSSH server to listen on the ADMIN interface
   networking.firewall.enable = mkForce false; # TODO: Why do I have to disable firewall for the ifcadmin interface to work with port 22?
