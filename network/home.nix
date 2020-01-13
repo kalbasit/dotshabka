@@ -4,6 +4,16 @@ in {
   network.description = "Network at home, including my VPN on EC2";
   network.enableRollback = true;
 
+  zeus = {
+    imports = [ ../hosts/zeus/configuration.nix ];
+    deployment.targetHost = "zeus.admin.nasreddine.com";
+  };
+
+  kore = {
+    imports = [ ../hosts/kore/configuration.nix ];
+    deployment.targetHost = "kore.admin.nasreddine.com";
+  };
+
   resources = {
     ec2SecurityGroups = {
       "ssh-in" = {
@@ -26,16 +36,6 @@ in {
         ];
       };
     };
-  };
-
-  zeus = {
-    imports = [ ../hosts/zeus/configuration.nix ];
-    deployment.targetHost = "zeus.admin.nasreddine.com";
-  };
-
-  kore = {
-    imports = [ ../hosts/kore/configuration.nix ];
-    deployment.targetHost = "kore.admin.nasreddine.com";
   };
 
   vpn-nasreddine = { resources, ... }: {
