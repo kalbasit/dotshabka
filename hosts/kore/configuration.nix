@@ -35,8 +35,13 @@ in
   ];
 
   users.users.root.openssh.authorizedKeys.keys = singleton dotshabka.external.kalbasit.keys;
+  users.groups.builders = { gid = 1999; };
 
   services.openssh.enable = true;
+
+  nix.trustedUsers = [
+    "root" "@wheel" "@builders"
+  ];
 
   # enable unifi and open the remote port
   networking.firewall.allowedTCPPorts = [ 8443 ];
@@ -63,7 +68,6 @@ in
   systemd.services.unifi.preStart = ''
     ln -nsf ${unifi_config_gateway} ${config.services.unifi.dataDir}/sites/default/config.gateway.json
   '';
-
 
   nixpkgs.config.allowUnfree = true;
   nixpkgs.system = "aarch64-linux";
