@@ -14,6 +14,11 @@ in {
     deployment.targetHost = "kore.admin.nasreddine.com";
   };
 
+  xenia = {
+    imports = [ ../hosts/xenia/configuration.nix ];
+    deployment.targetHost = "xenia.general.nasreddine.com";
+  };
+
   resources = {
     ec2SecurityGroups = {
       "ssh-in" = {
