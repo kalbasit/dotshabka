@@ -43,74 +43,71 @@ in {
   # Network
   #
 
-  networking.interfaces.enp3s0.useDHCP = true;
-  networking.interfaces.wlp4s0.useDHCP = true;
+  # networking.interfaces.enp3s0.useDHCP = true;
+  # networking.interfaces.wlp4s0.useDHCP = true;
 
-  # networking.vlans = {
-  #   # The ADMIN interface
-  #   ifcadmin = {
-  #     id = 2;
-  #     interface = "enp0s31f6";
-  #   };
-  #
-  #   # SN0 interface
-  #   ifcns0 = {
-  #     id = 50;
-  #     interface = "enp2s0f0";
-  #   };
-  #
-  #   # SN1 interface
-  #   ifcns1 = {
-  #     id = 51;
-  #     interface = "enp2s0f1";
-  #   };
-  #
-  #   # SN2 interface
-  #   ifcns2 = {
-  #     id = 52;
-  #     interface = "enp4s0f0";
-  #   };
-  #
-  #   # SN3 interface
-  #   ifcns3 = {
-  #     id = 53;
-  #     interface = "enp4s0f1";
-  #   };
-  # };
-  #
-  # networking.interfaces = {
-  #   # turn off DHCP on all real interfaces, I use virtual networks.
-  #   enp2s0f0 = { useDHCP = false; };
-  #   enp2s0f1 = { useDHCP = false; };
-  #   enp4s0f0 = { useDHCP = false; };
-  #   enp4s0f1 = { useDHCP = false; };
-  #   enp0s31f6 = { useDHCP = false; };
-  #
-  #   # The ADMIN interface
-  #   ifcadmin = {
-  #     useDHCP = true;
-  #   };
-  #
-  #   # SN0 address
-  #   ifcns0 = {
-  #     useDHCP = true;
-  #   };
-  #
-  #   # SN1 address
-  #   ifcns1 = {
-  #     useDHCP = true;
-  #   };
-  #
-  #   # SN2 address
-  #   ifcns2 = {
-  #     useDHCP = true;
-  #   };
-  #
-  #   # SN3 address
-  #   ifcns3 = {
-  #     useDHCP = true;
-  #   };
-  # };
+  networking.vlans = {
+    # The ADMIN interface
+    ifcadmin = {
+      id = 2;
+      interface = "enp3s0";
+    };
+
+    # # SN0 interface
+    # ifcns0 = {
+    #   id = 50;
+    #   interface = "enp3s0";
+    # };
+    #
+    # # SN1 interface
+    # ifcns1 = {
+    #   id = 51;
+    #   interface = "enp3s0";
+    # };
+    #
+    # # SN2 interface
+    # ifcns2 = {
+    #   id = 52;
+    #   interface = "enp3s0";
+    # };
+    #
+    # # SN3 interface
+    # ifcns3 = {
+    #   id = 53;
+    #   interface = "enp3s0";
+    # };
+  };
+
+  networking.interfaces = {
+    # turn off DHCP on all real interfaces, I use virtual networks.
+    enp3s0 = { useDHCP = false; };
+    wlp4s0 = { useDHCP = false; };
+
+    # The ADMIN interface
+    ifcadmin = {
+      useDHCP = true;
+    };
+
+    # # SN0 address
+    # ifcns0 = {
+    #   useDHCP = true;
+    # };
+    #
+    # # SN1 address
+    # ifcns1 = {
+    #   useDHCP = true;
+    # };
+    #
+    # # SN2 address
+    # ifcns2 = {
+    #   useDHCP = true;
+    # };
+    #
+    # # SN3 address
+    # ifcns3 = {
+    #   useDHCP = true;
+    # };
+  };
 
   # This value detershabkas the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database
