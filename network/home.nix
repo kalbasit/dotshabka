@@ -16,7 +16,7 @@ in {
 
   xenia = {
     imports = [ ../hosts/xenia/configuration.nix ];
-    deployment.targetHost = "xenia.general.nasreddine.com";
+    deployment.targetHost = "xenia.admin.nasreddine.com";
   };
 
   resources = {
