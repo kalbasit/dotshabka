@@ -4,14 +4,16 @@ with lib;
 
 let
   dotshabka = import ../.. { };
-  apollo_ip = "192.168.52.2";
   unifi_config_gateway =
     let
+      apollo_ip = "192.168.52.2";
+      zeus_ip = "192.168.52.3";
       config = {
         system = {
           static-host-mapping = {
             host-name = {
               "apollo.nasreddine.com" = { inet = [apollo_ip]; };
+              "nix-cache.corp.ktdev.io" = { inet = [zeus_ip]; };
               "plex.nasreddine.com" = { inet = [apollo_ip]; };
               "unifi.nasreddine.com" = { inet = [apollo_ip]; };
             };
