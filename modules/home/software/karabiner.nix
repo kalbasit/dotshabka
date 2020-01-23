@@ -1,5 +1,5 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
-  shabka.karabiner.enable = true;
+  shabka.karabiner.enable = pkgs.stdenv.isDarwin;
 }
