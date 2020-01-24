@@ -13,7 +13,8 @@ let
           static-host-mapping = {
             host-name = {
               "apollo.nasreddine.com" = { inet = [apollo_ip]; };
-              "nix-cache.corp.ktdev.io" = { inet = [zeus_ip]; };
+              "nix-cache.corp.ktdev.io" = { inet = [apollo_ip]; };
+              "cache.nixos.org" = { inet = [apollo_ip]; };
               "plex.nasreddine.com" = { inet = [apollo_ip]; };
               "unifi.nasreddine.com" = { inet = [apollo_ip]; };
             };
