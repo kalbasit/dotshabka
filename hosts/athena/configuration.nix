@@ -3,12 +3,11 @@
     <shabka/modules/darwin>
 
     ./home.nix
+
+    ../../modules/darwin
   ];
 
   networking.hostName = "athena";
 
   time.timeZone = "America/Los_Angeles";
-
-  shabka.keyboard.layouts = [ "colemak" ];
-  shabka.fonts.enable = true;
 }
