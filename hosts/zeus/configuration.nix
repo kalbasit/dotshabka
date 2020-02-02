@@ -96,6 +96,13 @@ in {
 
   shabka.hardware.machine = "zeus";
 
+  # override the binary caches to remove cache.nixos.org over https
+  nix.binaryCaches = mkForce [
+    "http://cache.nixos.org"
+    "http://yl.cachix.org"
+    "http://risson.cachix.org"
+  ];
+
   # enable iScsi with libvirtd
   nixpkgs.overlays = [
     (self: super: {
