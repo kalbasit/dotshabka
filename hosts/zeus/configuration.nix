@@ -185,9 +185,52 @@ in {
     };
   };
 
-  shabka.plex = {
-    enable = true;
-    dataDir = "/nas/Plex/Library/Application\ Support";
+  # Put Plex as a Docker container
+  docker-containers = {
+    plex = {
+      image = "linuxserver/plex@sha256:e34eceb573f34aef705dac4a0b72b5b6542149ea7cd2709151cbccc456d43b07";
+
+      extraDockerOptions = ["--network=host"];
+
+      environment = {
+        PUID = "193";
+        PGID = "193";
+        VERSION = "docker";
+      };
+
+      ports = [
+        "32400:32400"
+        "32400:32400/udp"
+        "32469:32469"
+        "32469:32469/udp"
+        "5353:5353/udp"
+        "1900:1900/udp"
+      ];
+
+      volumes = [
+        "/var/lib/plex:/config"
+
+        "/nas/Anime:/nas/Anime"
+        "/nas/Cartoon:/nas/Cartoon"
+        "/nas/Documentaries:/nas/Documentaries"
+        "/nas/Movies:/nas/Movies"
+        "/nas/MusicVideos:/nas/MusicVideos"
+        "/nas/Plays:/nas/Plays"
+        "/nas/Stand-upComedy:/nas/Stand-upComedy"
+        "/nas/TVShows:/nas/TVShows"
+      ];
+    };
+  };
+  systemd.timers.docker-plex-backup = {
+    wantedBy = [ "timers.target" ];
+    partOf = [ "docker-plex-backup.service" ];
+    timerConfig.OnCalendar = "daily";
+  };
+  systemd.services.docker-plex-backup = {
+    serviceConfig.Type = "oneshot";
+    script = ''
+        ${pkgs.rsync}/bin/rsync -avuz --no-o --no-p --delete /var/lib/plex/Library/ /nas/Plex/Library/
+    '';
   };
 
   #
