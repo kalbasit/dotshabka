@@ -16,6 +16,4 @@ with lib;
   shabka.users.enable = false; # XXX: enable this for the root password but have to disable home-manager
 
   networking.hostName = "vpn-nasreddine";
-
-  networking.firewall.allowedUDPPortRanges = [ { from = 1194; to = 1194; } ];
 }
