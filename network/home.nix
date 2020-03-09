@@ -61,7 +61,8 @@ in {
       };
 
       route53 = {
-        inherit (secrets) accessKeyId hostName;
+        inherit (secrets) accessKeyId;
+        inherit (secrets.vpn) hostName;
         ttl = 300;
       };
     };
