@@ -90,11 +90,14 @@ in {
     end
     section: aliases
         hades:
-          172.25.10.126
+          hades.admin.nasreddine.com
+          hades.general.nasreddine.com
         poseidon:
-          172.25.10.149
+          poseidon.admin.nasreddine.com
+          poseidon.general.nasreddine.com
         athena:
-          172.25.10.120
+          athena.admin.nasreddine.com
+          athena.general.nasreddine.com
     end
     section: links
        athena:
@@ -110,6 +113,9 @@ in {
   networking.firewall.allowedTCPPorts = [
     # synergy support
     24800
+
+    # shareable sevre_this
+    7070
   ];
 
   # This value detershabkas the NixOS release with which your system is to be
