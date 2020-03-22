@@ -40,7 +40,31 @@ in {
     };
 
     programs.git.extraConfig = {
+      # colors copied from README of diff-so-fancy
+      color = {
+        diff-highlight ={
+          newHighlight = "green bold 22";
+          newNormal    = "green bold";
+          oldHighlight = "red bold 52";
+          oldNormal    = "red bold";
+        };
+
+        diff = {
+          commit     = "yellow bold";
+          frag       = "magenta bold";
+          meta       = "11";
+          new        = "green bold";
+          old        = "red bold";
+          whitespace = "red reverse";
+        };
+      };
+
+      diff-so-fancy = {
+        markEmptyLines = false;
+      };
+
       core = {
+        pager = with pkgs; "${gitAndTools.diff-so-fancy}/bin/diff-so-fancy | ${less}/bin/less --tabs=4 -RFX";
         whitespace = "trailing-space,space-before-tab,-indent-with-non-tab,cr-at-eol";
       };
 
