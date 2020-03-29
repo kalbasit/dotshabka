@@ -84,29 +84,35 @@ in {
 
   environment.etc."synergy-server.conf".text = ''
     section: screens
-      hades:
       poseidon:
+      hades:
       athena:
+      test-mac-1:
     end
     section: aliases
-        hades:
-          hades.admin.nasreddine.com
-          hades.general.nasreddine.com
         poseidon:
           poseidon.admin.nasreddine.com
           poseidon.general.nasreddine.com
+        hades:
+          hades.admin.nasreddine.com
+          hades.general.nasreddine.com
         athena:
           athena.admin.nasreddine.com
           athena.general.nasreddine.com
+        test-mac-1:
+          test-mac-1.general.nasreddine.com
     end
     section: links
-       athena:
-           left = hades
-       hades:
-           right = athena
-           left = poseidon
-      poseidon:
+        poseidon:
           right = hades
+        hades:
+          left = poseidon
+          right = athena
+        athena:
+          left = hades
+          right = test-mac-1
+        test-mac-1:
+          left = athena
     end
   '';
 
