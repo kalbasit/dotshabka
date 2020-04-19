@@ -10,7 +10,5 @@
 
   networking.hostName = "poseidon";
 
-  time.timeZone = "America/Los_Angeles";
-
   shabka.gnupg.enable = true;
 }
