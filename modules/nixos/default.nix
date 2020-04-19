@@ -12,6 +12,7 @@ in
     bluetooth.enable = true;
     fonts.enable = true;
     gnome-keyring.enable = true;
+    gtk.enable = true;
     keeptruckin.enable = true;
     networking.enable = true;
     power.enable = true;
