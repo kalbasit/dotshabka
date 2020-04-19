@@ -30,11 +30,4 @@ in
   };
 
   users.users.root.openssh.authorizedKeys.keys = singleton dotshabka.external.kalbasit.keys;
-
-  # override the binary caches to remove cache.nixos.org over https
-  nix.binaryCaches = mkForce [
-    "http://cache.nixos.org"
-    "http://yl.cachix.org"
-    "http://risson.cachix.org"
-  ];
 }
