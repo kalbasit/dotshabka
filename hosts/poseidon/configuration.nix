@@ -5,7 +5,8 @@
     ./home.nix
 
     ../../modules/darwin
-  ];
+  ]
+  ++ (optionals (builtins.pathExists ./../../secrets/nix-darwin) (singleton ./../../secrets/nix-darwin));
 
   networking.hostName = "poseidon";
 
