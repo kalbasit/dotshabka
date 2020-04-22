@@ -87,8 +87,6 @@ in {
       poseidon:
       hades:
       athena:
-      test-mac-1:
-      test-mac-2:
     end
     section: aliases
         poseidon:
@@ -100,25 +98,15 @@ in {
         athena:
           athena.admin.nasreddine.com
           athena.general.nasreddine.com
-        test-mac-1:
-          test-mac-1.general.nasreddine.com
-        test-mac-2:
-          test-mac-2.general.nasreddine.com
     end
     section: links
-        test-mac-2:
-          right = poseidon
         poseidon:
-          left = test-mac-2
           right = hades
         hades:
           left = poseidon
           right = athena
         athena:
           left = hades
-          right = test-mac-1
-        test-mac-1:
-          left = athena
     end
   '';
 
