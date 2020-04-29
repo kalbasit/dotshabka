@@ -1,3 +1,7 @@
+{ lib, ... }:
+
+with lib;
+
 {
   imports = [
     <shabka/modules/darwin>
