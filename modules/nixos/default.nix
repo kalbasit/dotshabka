@@ -30,4 +30,9 @@ in
   };
 
   users.users.root.openssh.authorizedKeys.keys = singleton dotshabka.external.kalbasit.keys;
+
+  # TODO: fix this!
+  system.extraSystemBuilderCmds = ''
+    ln -sfn /yl/.surfingkeys.js $out/.surfingkeys.js
+  '';
 }
