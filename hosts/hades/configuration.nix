@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ lib, ... }:
 
 with lib;
 
@@ -34,12 +34,9 @@ in {
 
   networking.hostName = "hades";
 
-  # Switch to the flakes version of nix
   nix.extraOptions = ''
     builders-use-substitutes = true
-    experimental-features = nix-command
   '';
-  nix.package = pkgs.nixFlakes;
 
   shabka.hardware.intel_backlight.enable = true;
   shabka.keyboard.layouts = [ "colemak" ];
