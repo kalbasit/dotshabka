@@ -25,8 +25,6 @@ in
 
   shabka.users.users = {
     yl              = { inherit hashedPassword; sshKeys = singleton dotshabka.external.kalbasit.keys; uid = 2000; isAdmin = true;  home = "/yl"; };
-    yl_opensource   = { inherit hashedPassword; sshKeys = singleton dotshabka.external.kalbasit.keys; uid = 2002; isAdmin = false; home = "/yl/opensource"; };
-    yl_presentation = { inherit hashedPassword; sshKeys = singleton dotshabka.external.kalbasit.keys; uid = 2003; isAdmin = false; home = "/yl/presentation"; };
   };
 
   users.users.root.openssh.authorizedKeys.keys = singleton dotshabka.external.kalbasit.keys;
