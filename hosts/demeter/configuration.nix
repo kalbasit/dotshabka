@@ -22,6 +22,9 @@ in
 
   networking.hostName = "demeter";
 
+  # https://github.com/NixOS/nixpkgs/issues/62824
+  boot.loader.grub.device = lib.mkForce "/dev/nvme0n1";
+
   shabka.hardware.machine = "cloud";
 
   shabka.users = {
