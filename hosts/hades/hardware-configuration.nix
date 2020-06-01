@@ -3,7 +3,7 @@
 with lib;
 
 let
-  rootDevice   = "/dev/disk/by-uuid/e2b2367b-f458-4c55-a3f0-87cef3366d62";
+  rootDevice   = "/dev/disk/by-uuid/3e59e17d-9dff-4931-9f32-ab77e53c9f01";
   bootDevice   = "/dev/disk/by-uuid/CA50-980F";
   swapDevice   = "/dev/disk/by-uuid/a3e2591f-a1d4-4d75-b09c-094416b485c4";
   storgeDevice = "/dev/disk/by-uuid/d8a3aad7-3fe8-4986-acc5-c6f7525c9af4";
@@ -11,11 +11,6 @@ let
   subVolumes =
     {
       # NixOS
-      "/"                      = { device = rootDevice;   subvol = "@nixos/@root"; };
-      "/home"                  = { device = rootDevice;   subvol = "@nixos/@home"; };
-      "/yl"                    = { device = rootDevice;   subvol = "@yl"; };
-      "/yl/code"               = { device = rootDevice;   subvol = "@code"; options = [ "X-mount.mkdir=0700" ]; };
-      "/yl/private"            = { device = rootDevice;   subvol = "@private"; options = [ "X-mount.mkdir=0700" ]; };
       "/yl/storage"            = { device = storgeDevice; subvol = "@home-kalbasit-storage"; };
     };
 
@@ -45,8 +40,8 @@ in {
     {
       # NixOS
 
+      "/" = { device = rootDevice; fsType = "ext4"; };
       "/boot" = { device = bootDevice; fsType = "vfat"; };
-      "/mnt/volumes/root" = { device = rootDevice; fsType = "btrfs"; };
 
       # Storage
 
