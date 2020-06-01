@@ -1,6 +1,6 @@
 {
   shabka.home-manager.config = { userName, uid, isAdmin, home, nixosConfig }:
-  { lib, ... }:
+  { lib, pkgs, ... }:
 
   with lib;
 
@@ -19,6 +19,11 @@
       disable-ccid
       card-timeout 5
     '';
+
+    home.packages = with pkgs; [
+      signal-desktop
+      blueman
+    ];
 
     shabka.batteryNotifier.enable = true;
     shabka.git.enable = true;
