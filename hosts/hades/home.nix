@@ -21,8 +21,9 @@
     '';
 
     home.packages = with pkgs; [
-      signal-desktop
       blueman
+      pulseeffects
+      signal-desktop
     ];
 
     shabka.batteryNotifier.enable = true;
