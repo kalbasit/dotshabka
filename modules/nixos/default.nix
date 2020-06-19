@@ -24,13 +24,17 @@ in
   };
 
   shabka.users.users = {
-    yl              = { inherit hashedPassword; sshKeys = singleton dotshabka.external.kalbasit.keys; uid = 2000; isAdmin = true;  home = "/yl"; };
+    yl = { inherit hashedPassword; sshKeys = singleton dotshabka.external.kalbasit.keys; uid = 2000; isAdmin = true;  home = "/yl"; };
   };
 
   users.users.root.openssh.authorizedKeys.keys = singleton dotshabka.external.kalbasit.keys;
 
   # TODO: fix this!
-  system.extraSystemBuilderCmds = ''
-    ln -sfn /yl/.surfingkeys.js $out/.surfingkeys.js
+  system.extraSystemBuilderCmds = ''ln -sfn /yl/.surfingkeys.js $out/.surfingkeys.js'';
+
+  # L2TP VPN does not connect without the presence of this file!
+  # https://github.com/NixOS/nixpkgs/issues/64965
+  system.activationScripts.ipsec-secrets = ''
+    touch $out/etc/ipsec.secrets
   '';
 }
