@@ -54,7 +54,6 @@
           wlan = [ "wlp2s0" ];
         };
         volume.enable = true;
-        keyboardLayout.enable = true;
         temperature.enable = true;
       };
     };

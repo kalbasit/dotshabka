@@ -55,7 +55,6 @@
           wlan = [ "wlp109s0" ];
         };
         volume.enable = true;
-        keyboardLayout.enable = true;
         temperature.enable = true;
       };
     };

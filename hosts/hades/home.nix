@@ -62,7 +62,6 @@
           wlan = [ "wlp110s0" ];
         };
         volume.enable = true;
-        keyboardLayout.enable = true;
         temperature.enable = true;
       };
     };
