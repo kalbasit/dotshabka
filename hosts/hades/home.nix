@@ -22,6 +22,7 @@
 
     home.packages = with pkgs; [
       blueman
+      dbeaver
       pulseeffects
       signal-desktop
     ];
