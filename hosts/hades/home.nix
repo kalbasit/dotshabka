@@ -56,6 +56,7 @@
         };
         filesystems.enable = true;
         ram.enable = true;
+        microphone.enable = true;
         network = {
           enable = true;
           eth = [ "eno1" ];
