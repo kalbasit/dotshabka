@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, config, ... }:
 
 with lib;
 
@@ -46,6 +46,20 @@ in {
   shabka.virtualisation.libvirtd.enable = true;
 
   shabka.hardware.machine = "precision-7530";
+
+  #
+  # fake background camera
+  #
+  boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
+
+  boot.kernelModules = [ "v4l2loopback" ];
+
+  boot.extraModprobeConfig = ''
+    options v4l2loopback exclusive_caps=1 video_nr=9 card_label=v4l2sink
+  '';
+  #
+  # end fake background camera
+  #
 
   # Set the hardware clock to local time to support dual booting with Windows.
   time.hardwareClockInLocalTime = true;
