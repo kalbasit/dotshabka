@@ -20,6 +20,8 @@
       card-timeout 5
     '';
 
+    shabka.workstation.rofi.dpi = 196;
+
     xresources.properties = {
       "Xft.antialias" = 1;
       "Xft.autohint" = 0;
@@ -56,6 +58,8 @@
     shabka.workstation.enable = true;
 
     shabka.workstation.i3.bar = {
+      dpi = 196;
+      height = 43;
       polybar.enable = true;
       modules = {
         backlight.enable = true;
