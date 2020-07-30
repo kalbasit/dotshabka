@@ -37,6 +37,17 @@ in {
       # instead of opening all files:
       # git reviewone foo.js bar.js
       reviewone = ''!nvim -p +"tabdo Gdiff ''${REVIEW_BASE:-master}"'';
+
+      branches = ''
+        ! # go to shell command mode
+        bo() {
+          local branch
+          for branch in $(git branch | sed s/^..//); do
+            echo -e "$(git log -1 --pretty=format:"%Cgreen%ci %Cblue%cr%Creset" "''${branch}")\t''${branch}"
+          done | sort -r
+        }
+        bo
+      '';
     };
 
     programs.git.extraConfig = {
