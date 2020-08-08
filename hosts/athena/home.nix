@@ -17,7 +17,6 @@
     shabka.neovim.enable = true;
     shabka.pet.enable = true;
     shabka.taskwarrior.enable = true;
-    shabka.timewarrior.enable = true;
     shabka.tmux.enable = true;
     shabka.keyboard.layouts = [ "colemak" ];
   };
