@@ -32,9 +32,12 @@ in {
 
   networking.hostName = "achilles";
 
+  # Switch to the flakes version of nix
   nix.extraOptions = ''
     builders-use-substitutes = true
+    experimental-features = nix-command flakes
   '';
+  nix.package = pkgs.nixFlakes;
 
   shabka.hardware.intel_backlight.enable = true;
   shabka.printing.enable = true;
