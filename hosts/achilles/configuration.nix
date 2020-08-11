@@ -44,6 +44,7 @@ in {
   shabka.keyboard.layouts = [ "colemak" ];
   shabka.users.enable = true;
   shabka.virtualisation.docker.enable = true;
+  shabka.virtualisation.libvirtd.enable = true;
 
   shabka.hardware.machine = "thinkpad-p1";
 
