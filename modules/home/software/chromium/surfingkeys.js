@@ -33,6 +33,9 @@ settings.clickableSelector = "*.jfk-button, *.goog-flat-menu-button";
 // show only tabs from the current window
 settings.omnibarTabsQuery = {currentWindow: true};
 
+// set the default search engine duckduckgo
+settings.defaultSearchEngine = "d";
+
 // END Settings }}}
 //////////////////////////////////////
 
