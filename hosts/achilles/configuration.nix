@@ -37,7 +37,7 @@ in {
     builders-use-substitutes = true
     experimental-features = nix-command flakes
   '';
-  nix.package = pkgs.nixFlakes;
+  # nix.package = pkgs.nixFlakes.override { boehmgc = null; };
 
   shabka.hardware.intel_backlight.enable = true;
   shabka.printing.enable = true;
