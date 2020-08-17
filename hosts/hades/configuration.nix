@@ -50,13 +50,16 @@ in {
   #
   # fake background camera
   #
-  boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
 
-  boot.kernelModules = [ "v4l2loopback" ];
+  # XXX: Disabled because it does not compile correctly right now
+  # boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
+  #
+  # boot.kernelModules = [ "v4l2loopback" ];
+  #
+  # boot.extraModprobeConfig = ''
+  #   options v4l2loopback exclusive_caps=1 video_nr=9 card_label=v4l2sink
+  # '';
 
-  boot.extraModprobeConfig = ''
-    options v4l2loopback exclusive_caps=1 video_nr=9 card_label=v4l2sink
-  '';
   #
   # end fake background camera
   #
