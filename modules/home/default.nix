@@ -1,9 +1,15 @@
+{ pkgs, ... }:
+
 with import <shabka/util>;
 
 {
   imports = recImport ./.;
 
-  config.dotshabka.brave.enable = true;
-  config.dotshabka.chromium.enable = true;
-  config.dotshabka.chromium.surfingkeys.enable = true;
+	config = {
+		dotshabka.brave.enable = true;
+		dotshabka.chromium.enable = true;
+		dotshabka.chromium.surfingkeys.enable = true;
+
+		home.packages = with pkgs; [ nitrogen ];
+	};
 }
