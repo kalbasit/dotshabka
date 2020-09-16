@@ -8,7 +8,14 @@ let
   thirdModifier = "Mod1";
   nosid = "--no-startup-id";
 in {
-  xsession.windowManager.i3.config.keybindings = mkIf config.shabka.workstation.i3.enable {
-    "${defaultModifier}+${thirdModifier}+s" = "exec ${nosid} ${getBin pkgs.pulseaudio}/bin/pactl set-source-mute @DEFAULT_SOURCE@ toggle";
+  xsession.windowManager.i3.config = mkIf config.shabka.workstation.i3.enable {
+    keybindings = {
+      "${defaultModifier}+${thirdModifier}+s" = "exec ${nosid} ${getBin pkgs.pulseaudio}/bin/pactl set-source-mute @DEFAULT_SOURCE@ toggle";
+    };
+
+
+    startup = [
+      { command = "${getBin pkgs.nitrogen}/bin/nitrogen --restore"; always = false; notification = false; }
+    ];
   };
 }
