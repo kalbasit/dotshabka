@@ -6,6 +6,7 @@ let
   dotshabka = import ../.. { };
   unifi_config_gateway =
     let
+      hole_ip = "0.0.0.0";
       apollo_ip = "192.168.52.2";
       zeus_ip = "192.168.52.3";
       config = {
@@ -19,6 +20,11 @@ let
               "risson.cachix.org" = { inet = [apollo_ip]; };
               "unifi.nasreddine.com" = { inet = [apollo_ip]; };
               "yl.cachix.org" = { inet = [apollo_ip]; };
+
+              # DNS Hole
+              "roblox.com" = { inet = [hole_ip]; };
+              "www.roblox.com" = { inet = [hole_ip]; };
+              "api.roblox.com" = { inet = [hole_ip]; };
             };
           };
         };
