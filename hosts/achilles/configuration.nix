@@ -37,7 +37,13 @@ in {
     builders-use-substitutes = true
     experimental-features = nix-command flakes
   '';
-  # nix.package = pkgs.nixFlakes.override { boehmgc = null; };
+  nix.package =
+    let
+      pkgs' = import (builtins.fetchTarball {
+        url = "https://github.com/NixOS/nixpkgs/archive/51aaa3fa1b69559456f9bd4968bd5b179a784f67.tar.gz";
+        sha256 = "0n1g9dh0bwmxm9ivcn219dg6cd2f7qz5ni5a6a80z0zkaabj6pzm";
+      }) {config = {}; overlays = [];};
+    in pkgs'.nixFlakes;
 
   shabka.hardware.intel_backlight.enable = true;
   shabka.printing.enable = true;
