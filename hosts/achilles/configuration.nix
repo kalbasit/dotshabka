@@ -52,6 +52,9 @@ in {
   shabka.virtualisation.docker.enable = true;
   shabka.virtualisation.libvirtd.enable = true;
 
+  services.xserver.libinput.enable = true;
+  services.xserver.libinput.accelSpeed = "0.5";
+
   shabka.hardware.machine = "thinkpad-p1";
 
   services.logind.extraConfig = ''
